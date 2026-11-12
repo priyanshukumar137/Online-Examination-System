@@ -77,3 +77,12 @@ src/main/resources/
     styles.css
     app.js
 ```
+
+
+## Java syllabus concepts explained
+
+A detailed explanation of the concepts listed in the Group 2 project outline—including classes and objects, arrays, `Math`, String methods, abstraction, inheritance, interfaces, packages, threads, custom exceptions, synchronization, JDBC, Swing components, layouts and event listeners—is available here:
+
+- [Java Syllabus Concepts Explained](docs/CONCEPTS_EXPLAINED.md)
+
+**Implementation note:** the current `main` branch is a Spring Boot web application with an HTML/CSS/JavaScript frontend and local serialized-file persistence. The supplied project outline describes a Swing + JDBC design. The documentation clearly identifies which concepts are examples/requirements versus what the current repository actually implements. Do not describe Swing or JDBC as implemented until those layers are added and tested.
