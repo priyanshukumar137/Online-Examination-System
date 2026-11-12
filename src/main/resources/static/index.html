@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>ExamFlow — Online Examination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main id="app">
+    <section id="authView" class="auth-layout">
+      <div class="auth-story">
+        <div class="brand"><span class="brand-mark">E</span><span>exam<span class="brand-light">flow</span></span></div>
+        <div class="story-copy">
+          <span class="eyebrow"><i></i> SMARTER WAY TO ASSESS</span>
+          <h1>Make every<br>answer <em>count.</em></h1>
+          <p>A focused, simple and secure-feeling space to take exams, track progress and celebrate what you know.</p>
+          <div class="story-points"><span>✦ Timed assessments</span><span>✦ Instant results</span><span>✦ Progress history</span></div>
+        </div>
+        <div class="story-foot">LEARN. ATTEMPT. ACHIEVE.</div>
+      </div>
+      <div class="auth-panel">
+        <div class="auth-card">
+          <div class="mobile-brand brand"><span class="brand-mark">E</span><span>exam<span class="brand-light">flow</span></span></div>
+          <div class="auth-tabs"><button class="tab active" id="loginTab">Sign in</button><button class="tab" id="registerTab">Create account</button></div>
+          <div id="loginForm">
+            <span class="eyebrow purple">WELCOME BACK</span><h2>Good to see you.</h2><p class="muted">Enter your details to access your exam space.</p>
+            <form id="loginFormEl" class="form">
+              <label>Username<input id="loginUsername" autocomplete="username" placeholder="Your username" required></label>
+              <label>Password<input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password" required></label>
+              <button class="btn btn-primary full" type="submit">Sign in <span>→</span></button>
+            </form>
+            <div class="demo-note">Admin demo access <b>admin</b> / <b>admin123</b></div>
+          </div>
+          <div id="registerForm" class="hidden">
+            <span class="eyebrow purple">GET STARTED</span><h2>Create your account.</h2><p class="muted">Join ExamFlow and start learning with confidence.</p>
+            <form id="registerFormEl" class="form">
+              <label>Full name<input id="regName" placeholder="Your full name" required></label>
+              <label>Username<input id="regUsername" placeholder="Choose a username" required></label>
+              <label>Password<input id="regPassword" type="password" minlength="4" placeholder="At least 4 characters" required></label>
+              <button class="btn btn-primary full" type="submit">Create account <span>→</span></button>
+            </form>
+          </div>
+          <div id="authMessage" class="message hidden"></div>
+        </div>
+        <div class="auth-bottom">© 2026 ExamFlow · Online Examination System</div>
+      </div>
+    </section>
+
+    <section id="dashboardView" class="hidden app-layout">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">E</span><span>exam<span class="brand-light">flow</span></span></div>
+        <div class="side-label">WORKSPACE</div>
+        <nav id="sideNav"></nav>
+        <div class="sidebar-bottom"><div class="avatar" id="userAvatar">P</div><div class="user-meta"><b id="sideName">Student</b><small id="sideRole">STUDENT</small></div><button id="logoutBtn" class="icon-btn" title="Sign out">↗</button></div>
+      </aside>
+      <div class="main-area">
+        <header class="topbar"><div><span class="top-kicker">YOUR LEARNING SPACE</span><h2 id="pageHeading">Dashboard</h2></div><div class="top-user"><span class="online-dot"></span><span id="topUserName">Student</span></div></header>
+        <div id="pageContent" class="page-content"></div>
+      </div>
+    </section>
+    <div id="toast" class="toast"></div>
+  </main>
+  <script src="/app.js"></script>
+</body></html>
