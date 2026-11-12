@@ -86,3 +86,8 @@ A detailed explanation of the concepts listed in the Group 2 project outline—i
 - [Java Syllabus Concepts Explained](docs/CONCEPTS_EXPLAINED.md)
 
 **Implementation note:** the current `main` branch is a Spring Boot web application with an HTML/CSS/JavaScript frontend and local serialized-file persistence. The supplied project outline describes a Swing + JDBC design. The documentation clearly identifies which concepts are examples/requirements versus what the current repository actually implements. Do not describe Swing or JDBC as implemented until those layers are added and tested.
+
+
+## View the concepts guide in your browser
+
+After starting the application, open `http://localhost:8080/concepts.html`. A **Java Concepts** shortcut is also available in the portal header. The page explains all five syllabus units and clearly marks the concepts that are examples versus features implemented in the current web-app branch.
