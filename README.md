@@ -1,81 +1,79 @@
-# Online Examination System
+# ExamFlow — Online Examination System
 
-A desktop-based Online Examination System built with **Java 17, Java Swing and Maven**.
+A responsive, browser-based Online Examination System built with **Java 17, Spring Boot, HTML, CSS and JavaScript**.
 
-## Interface
+## Features
 
-The application opens in a modern blue-and-white desktop interface with:
-- Student sign-in and registration.
-- Student dashboard with question and attempt summaries.
-- MCQ examination screen with Previous/Next navigation and a countdown timer.
-- Result screen showing marks, percentage and pass/fail status.
-- Admin dashboard to add MCQs and view all student results.
-- Results tables for students and administrators.
+### Student
+- Register and sign in.
+- Responsive student dashboard with exam statistics.
+- Attempt Java MCQs in a browser.
+- Countdown timer, question progress, Previous/Next navigation.
+- Instant score, percentage and pass/fail result.
+- Personal examination history.
+
+### Administrator
+- Admin dashboard with question and submission counts.
+- Add four-option MCQ questions and choose the correct answer.
+- View all student examination results.
 
 ## Technology
 - Java 17
-- Java Swing (desktop GUI)
-- Apache Maven
+- Spring Boot 3.4
+- Spring Web REST API
+- HTML5, CSS3 and JavaScript
+- Maven
 - Java object serialization for local persistence
-- No external runtime dependencies
 
 ## Requirements
 - JDK 17 or later
 - Maven 3.8+
 
-## Run from VS Code / terminal
-Open the project folder, then run:
+## Run locally
+From the project root (the folder containing `pom.xml`):
 
 ```bash
 mvn clean package
 java -jar target/online-examination-system-1.0.0.jar
 ```
 
-Or run directly from Maven:
+Open this address in your browser:
 
-```bash
-mvn clean compile
-mvn exec:java -Dexec.mainClass="com.group2.onlineexam.Main"
 ```
+http://localhost:8080
+```
+
+You can also run the main class from your IDE after Maven has downloaded dependencies.
 
 ## Default administrator account
 - Username: `admin`
 - Password: `admin123`
 
-Change this demo password before any real deployment. This educational project stores passwords in its local serialized data file and is not intended for production use.
+Students can create accounts from the registration screen.
 
 ## Data storage
-The application creates `data/online-exam.dat` on first run. Student accounts, questions and attempts persist between runs. This data file is intentionally excluded from Git.
+The application creates `data/online-exam.dat` on first run. Accounts, questions and attempts are stored locally between runs. The data file is excluded from Git.
+
+## Examination rules
+- One mark per question.
+- Four options per question, one correct answer.
+- Pass mark: 40%.
+- Timer: one minute per question, with a five-minute minimum.
+
+## Important security note
+This is an educational project/demo. It currently uses simple local authentication and Java object serialization. Do not expose it to the public internet or use real personal data without adding password hashing, authenticated sessions/authorization, input hardening and a production database.
 
 ## Project structure
 ```
-Online-Examination-System/
-├── pom.xml
-├── README.md
-├── .gitignore
-└── src/main/java/com/group2/onlineexam/
-    ├── Main.java
-    ├── ui/
-    │   └── OnlineExamApp.java
-    ├── model/
-    │   ├── Attempt.java
-    │   ├── Question.java
-    │   └── User.java
-    └── service/
-        └── ExamService.java
+src/main/java/com/group2/onlineexam/
+  Main.java
+  model/
+  service/
+  web/ExamController.java
+src/main/resources/
+  application.properties
+  static/
+    index.html
+    styles.css
+    app.js
 ```
-
-## Examination rules
-- Each question carries one mark.
-- Each question has four options and one correct answer.
-- A score of 40% or above is a pass.
-- The exam timer is one minute per question, with a five-minute minimum.
-
-## OOP concepts
-- **Encapsulation:** private model fields with controlled access.
-- **Abstraction:** examination operations are grouped in the service layer.
-- **Composition:** the service manages users, questions and attempts.
-- **Persistence:** serializable objects are stored locally.
-
-## License
-For educational use.
