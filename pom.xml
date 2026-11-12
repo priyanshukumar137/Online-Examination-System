@@ -7,7 +7,7 @@
     <artifactId>online-examination-system</artifactId>
     <version>1.0.0</version>
     <name>Online Examination System</name>
-    <description>A console-based online examination system built with Java and OOP.</description>
+    <description>A desktop online examination system with a Java Swing interface and OOP.</description>
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
