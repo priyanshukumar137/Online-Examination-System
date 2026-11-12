@@ -435,7 +435,7 @@ public class OnlineExamApp {
 
     private JPanel formCard() {
         JPanel card = whiteCard();
-        card.setPreferredSize(new Dimension(420, 0));
+        card.setPreferredSize(new Dimension(420, 470));
         card.setBorder(new EmptyBorder(32, 36, 32, 36));
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
         return card;
