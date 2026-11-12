@@ -19,7 +19,7 @@
     <button class="nav-item" data-page="results"><span>▥</span> My results</button>
     <button class="nav-item" data-page="project"><span>▧</span> Project details</button>
     <div class="side-label admin-only">ADMINISTRATION</div>
-    <button class="nav-item admin-only" data-page="manage"><span>＋</span> Manage questions</button>
+    <button class="nav-item admin-only" data-page="add" class="nav-item admin-only"><span>＋</span> Manage questions</button>
     <div class="sidebar-bottom"><div class="help-card"><div class="help-icon">✦</div><b>Need a hand?</b><p>Review the instructions before starting your exam.</p></div><div class="profile-mini"><div class="avatar" id="sideAvatar">G</div><div><b id="sideName">Guest User</b><small id="sideRole">Not signed in</small></div><button id="logoutBtn" title="Log out">↗</button></div></div>
   </aside>
 
@@ -44,7 +44,7 @@
       <div class="table-wrap"><table><thead><tr><th>EXAMINATION</th><th>DATE</th><th>SCORE</th><th>STATUS</th></tr></thead><tbody id="resultsBody"></tbody></table></div>
     </section>
 
-    <section id="managePage" class="page">
+    <section id="addPage" class="page">
       <div class="intro-row"><div><h2>Question manager</h2><p>Build your question bank for student assessments.</p></div><span class="pill admin-pill">ADMIN ACCESS</span></div>
       <div class="manage-layout"><form id="questionForm" class="panel form-panel"><h3>Add a question</h3><label>Question text</label><textarea id="questionText" required placeholder="Enter your question here..."></textarea><label>Answer options</label><div class="option-inputs"><input required placeholder="Option A" id="opt0"><input required placeholder="Option B" id="opt1"><input required placeholder="Option C" id="opt2"><input required placeholder="Option D" id="opt3"></div><label>Correct answer</label><select id="correctAnswer"><option value="0">Option A</option><option value="1">Option B</option><option value="2">Option C</option><option value="3">Option D</option></select><label>Exam category</label><select id="questionCategory"><option>Java Fundamentals</option><option>Computer Science Basics</option><option>Web Development</option></select><button class="btn btn-primary" type="submit">＋ Add question</button></form><div class="panel question-bank"><div class="bank-heading"><div><h3>Question bank</h3><p id="questionCount">0 questions</p></div><span class="stat-icon purple">▤</span></div><div id="questionList"></div></div></div>
     </section>
