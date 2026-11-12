@@ -1,51 +1,51 @@
 # Online Examination System
 
-A Java 17 console-based Online Examination System built with Object-Oriented Programming and Maven.
+A desktop-based Online Examination System built with **Java 17, Java Swing and Maven**.
 
-## Features
+## Interface
 
-### Student
-- Register and log in.
-- View the available Java MCQ examination.
-- Attempt multiple-choice questions (A/B/C/D).
-- Receive an instant score, percentage and pass/fail result.
-- View personal examination history.
-
-### Administrator
-- Log in to the administrator dashboard.
-- Add four-option MCQ questions.
-- View the question bank.
-- View results submitted by all students.
+The application opens in a modern blue-and-white desktop interface with:
+- Student sign-in and registration.
+- Student dashboard with question and attempt summaries.
+- MCQ examination screen with Previous/Next navigation and a countdown timer.
+- Result screen showing marks, percentage and pass/fail status.
+- Admin dashboard to add MCQs and view all student results.
+- Results tables for students and administrators.
 
 ## Technology
 - Java 17
+- Java Swing (desktop GUI)
 - Apache Maven
-- Object serialization for local persistence
+- Java object serialization for local persistence
 - No external runtime dependencies
 
 ## Requirements
 - JDK 17 or later
 - Maven 3.8+
 
-## Run
+## Run from VS Code / terminal
+Open the project folder, then run:
+
 ```bash
 mvn clean package
 java -jar target/online-examination-system-1.0.0.jar
 ```
 
-Or compile with:
+Or run directly from Maven:
+
 ```bash
 mvn clean compile
+mvn exec:java -Dexec.mainClass="com.group2.onlineexam.Main"
 ```
 
 ## Default administrator account
 - Username: `admin`
 - Password: `admin123`
 
-Change this demo password before any real deployment. This educational console project stores passwords in its local serialized data file and is not intended for production use.
+Change this demo password before any real deployment. This educational project stores passwords in its local serialized data file and is not intended for production use.
 
 ## Data storage
-The application automatically creates `data/online-exam.dat` on first run. Student accounts, questions and attempts persist between runs. This data file is intentionally excluded from Git.
+The application creates `data/online-exam.dat` on first run. Student accounts, questions and attempts persist between runs. This data file is intentionally excluded from Git.
 
 ## Project structure
 ```
@@ -55,6 +55,8 @@ Online-Examination-System/
 ├── .gitignore
 └── src/main/java/com/group2/onlineexam/
     ├── Main.java
+    ├── ui/
+    │   └── OnlineExamApp.java
     ├── model/
     │   ├── Attempt.java
     │   ├── Question.java
@@ -67,6 +69,7 @@ Online-Examination-System/
 - Each question carries one mark.
 - Each question has four options and one correct answer.
 - A score of 40% or above is a pass.
+- The exam timer is one minute per question, with a five-minute minimum.
 
 ## OOP concepts
 - **Encapsulation:** private model fields with controlled access.
