@@ -1,19 +1,11 @@
 package com.group2.onlineexam;
 
-import com.group2.onlineexam.ui.OnlineExamApp;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ignored) {
-                // Use Swing's default look and feel if the system theme is unavailable.
-            }
-            new OnlineExamApp().show();
-        });
+        SpringApplication.run(Main.class, args);
     }
 }
