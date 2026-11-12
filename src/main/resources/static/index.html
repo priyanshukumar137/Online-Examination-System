@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111827">
-  <title>ExamFlow — Online Examination</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamEase | Online Examination System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-  <main id="app">
-    <section id="authView" class="auth-layout">
-      <div class="auth-story">
-        <div class="brand"><span class="brand-mark">E</span><span>exam<span class="brand-light">flow</span></span></div>
-        <div class="story-copy">
-          <span class="eyebrow"><i></i> SMARTER WAY TO ASSESS</span>
-          <h1>Make every<br>answer <em>count.</em></h1>
-          <p>A focused, simple and secure-feeling space to take exams, track progress and celebrate what you know.</p>
-          <div class="story-points"><span>✦ Timed assessments</span><span>✦ Instant results</span><span>✦ Progress history</span></div>
-        </div>
-        <div class="story-foot">LEARN. ATTEMPT. ACHIEVE.</div>
-      </div>
-      <div class="auth-panel">
-        <div class="auth-card">
-          <div class="mobile-brand brand"><span class="brand-mark">E</span><span>exam<span class="brand-light">flow</span></span></div>
-          <div class="auth-tabs"><button class="tab active" id="loginTab">Sign in</button><button class="tab" id="registerTab">Create account</button></div>
-          <div id="loginForm">
-            <span class="eyebrow purple">WELCOME BACK</span><h2>Good to see you.</h2><p class="muted">Enter your details to access your exam space.</p>
-            <form id="loginFormEl" class="form">
-              <label>Username<input id="loginUsername" autocomplete="username" placeholder="Your username" required></label>
-              <label>Password<input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter password" required></label>
-              <button class="btn btn-primary full" type="submit">Sign in <span>→</span></button>
-            </form>
-            <div class="demo-note">Admin demo access <b>admin</b> / <b>admin123</b></div>
-          </div>
-          <div id="registerForm" class="hidden">
-            <span class="eyebrow purple">GET STARTED</span><h2>Create your account.</h2><p class="muted">Join ExamFlow and start learning with confidence.</p>
-            <form id="registerFormEl" class="form">
-              <label>Full name<input id="regName" placeholder="Your full name" required></label>
-              <label>Username<input id="regUsername" placeholder="Choose a username" required></label>
-              <label>Password<input id="regPassword" type="password" minlength="4" placeholder="At least 4 characters" required></label>
-              <button class="btn btn-primary full" type="submit">Create account <span>→</span></button>
-            </form>
-          </div>
-          <div id="authMessage" class="message hidden"></div>
-        </div>
-        <div class="auth-bottom">© 2026 ExamFlow · Online Examination System</div>
-      </div>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">E</div><div><b>ExamEase</b><small>ONLINE EXAM PORTAL</small></div></div>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-item active" data-page="dashboard"><span>▦</span> Dashboard</button>
+    <button class="nav-item" data-page="exams"><span>▤</span> Available exams</button>
+    <button class="nav-item" data-page="results"><span>▥</span> My results</button>
+    <button class="nav-item" data-page="project"><span>▧</span> Project details</button>
+    <div class="side-label admin-only">ADMINISTRATION</div>
+    <button class="nav-item admin-only" data-page="manage"><span>＋</span> Manage questions</button>
+    <div class="sidebar-bottom"><div class="help-card"><div class="help-icon">✦</div><b>Need a hand?</b><p>Review the instructions before starting your exam.</p></div><div class="profile-mini"><div class="avatar" id="sideAvatar">G</div><div><b id="sideName">Guest User</b><small id="sideRole">Not signed in</small></div><button id="logoutBtn" title="Log out">↗</button></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><div><div class="eyebrow">LEARNING • ASSESSMENT • GROWTH</div><h1 id="pageTitle">Dashboard</h1></div><div class="top-actions"><span class="date-chip" id="today"></span><button class="user-chip" id="openLogin"><span class="avatar small" id="topAvatar">G</span><span id="topUser">Sign in</span><span>⌄</span></button></div></header>
+
+    <section id="dashboardPage" class="page active">
+      <div class="welcome-card"><div><div class="welcome-tag">YOUR LEARNING SPACE</div><h2>Learn. Attempt. <span>Achieve.</span></h2><p>Welcome to your online examination portal. Take a test, track your progress, and keep moving forward.</p><button class="btn btn-light" id="browseExams">Explore exams <span>→</span></button></div><div class="welcome-art"><div class="art-circle"><div class="paper">✓<small>EXAM</small></div></div><div class="float-card"> <b>✦ &nbsp; Stay focused</b><small>Your next milestone awaits.</small></div></div></div>
+      <div class="section-heading"><div><h3>Overview</h3><p>A quick look at your examination activity</p></div></div>
+      <div class="stats-grid"><div class="stat-card"><div class="stat-top"><span>Available exams</span><span class="stat-icon purple">▤</span></div><strong id="statExams">0</strong><small>Ready to attempt</small></div><div class="stat-card"><div class="stat-top"><span>Tests completed</span><span class="stat-icon green">✓</span></div><strong id="statCompleted">0</strong><small>Your submitted attempts</small></div><div class="stat-card"><div class="stat-top"><span>Average score</span><span class="stat-icon orange">％</span></div><strong id="statAverage">—</strong><small>Across completed tests</small></div></div>
+      <div class="section-heading"><div><h3>Quick actions</h3><p>Pick up where you want to begin</p></div></div>
+      <div class="quick-grid"><button class="quick-card" data-go="exams"><span class="quick-icon purple">▤</span><b>Browse examinations</b><small>View tests and instructions</small><span class="arrow">↗</span></button><button class="quick-card" data-go="results"><span class="quick-icon green">▥</span><b>View your results</b><small>Check scores and performance</small><span class="arrow">↗</span></button><button class="quick-card admin-only" data-go="manage"><span class="quick-icon orange">＋</span><b>Add questions</b><small>Create or update exam questions</small><span class="arrow">↗</span></button></div>
     </section>
 
-    <section id="dashboardView" class="hidden app-layout">
-      <aside class="sidebar">
-        <div class="brand"><span class="brand-mark">E</span><span>exam<span class="brand-light">flow</span></span></div>
-        <div class="side-label">WORKSPACE</div>
-        <nav id="sideNav"></nav>
-        <div class="sidebar-bottom"><div class="avatar" id="userAvatar">P</div><div class="user-meta"><b id="sideName">Student</b><small id="sideRole">STUDENT</small></div><button id="logoutBtn" class="icon-btn" title="Sign out">↗</button></div>
-      </aside>
-      <div class="main-area">
-        <header class="topbar"><div><span class="top-kicker">YOUR LEARNING SPACE</span><h2 id="pageHeading">Dashboard</h2></div><div class="top-user"><span class="online-dot"></span><span id="topUserName">Student</span></div></header>
-        <div id="pageContent" class="page-content"></div>
-      </div>
+    <section id="examsPage" class="page">
+      <div class="intro-row"><div><h2>Find your next challenge</h2><p>Choose an examination and test what you know.</p></div><span class="pill"><i></i> Exams open</span></div>
+      <div id="examGrid" class="exam-grid"></div>
     </section>
-    <div id="toast" class="toast"></div>
+
+    <section id="resultsPage" class="page">
+      <div class="section-heading"><div><h3>Performance history</h3><p>Your submitted examination results</p></div></div>
+      <div class="table-wrap"><table><thead><tr><th>EXAMINATION</th><th>DATE</th><th>SCORE</th><th>STATUS</th></tr></thead><tbody id="resultsBody"></tbody></table></div>
+    </section>
+
+    <section id="managePage" class="page">
+      <div class="intro-row"><div><h2>Question manager</h2><p>Build your question bank for student assessments.</p></div><span class="pill admin-pill">ADMIN ACCESS</span></div>
+      <div class="manage-layout"><form id="questionForm" class="panel form-panel"><h3>Add a question</h3><label>Question text</label><textarea id="questionText" required placeholder="Enter your question here..."></textarea><label>Answer options</label><div class="option-inputs"><input required placeholder="Option A" id="opt0"><input required placeholder="Option B" id="opt1"><input required placeholder="Option C" id="opt2"><input required placeholder="Option D" id="opt3"></div><label>Correct answer</label><select id="correctAnswer"><option value="0">Option A</option><option value="1">Option B</option><option value="2">Option C</option><option value="3">Option D</option></select><label>Exam category</label><select id="questionCategory"><option>Java Fundamentals</option><option>Computer Science Basics</option><option>Web Development</option></select><button class="btn btn-primary" type="submit">＋ Add question</button></form><div class="panel question-bank"><div class="bank-heading"><div><h3>Question bank</h3><p id="questionCount">0 questions</p></div><span class="stat-icon purple">▤</span></div><div id="questionList"></div></div></div>
+    </section>
+
+    <section id="testPage" class="page">
+      <div class="test-top"><button class="back-link" id="exitTest">← Exit exam</button><div class="timer-box"><span>TIME REMAINING</span><strong id="timer">10:00</strong></div></div>
+      <div class="test-layout"><div class="panel exam-panel"><div class="exam-meta"><span class="pill" id="testCategory">EXAM</span><span id="questionProgress">Question 1 of 5</span></div><div class="progress-track"><div id="progressFill"></div></div><div id="questionArea"></div><div class="test-controls"><button class="btn btn-outline" id="prevQuestion">Previous</button><button class="btn btn-primary" id="nextQuestion">Next question →</button><button class="btn btn-primary hidden" id="submitExam">Submit exam</button></div></div><aside class="panel question-nav"><h3>Question palette</h3><p>Click a number to navigate</p><div id="questionDots" class="dots"></div><div class="legend"><span><i class="answered"></i> Answered</span><span><i></i> Not answered</span></div></aside></div>
+    </section>
   </main>
-  <script src="/app.js"></script>
-</body></html>
+</div>
+
+<div class="modal-backdrop" id="loginModal"><div class="modal"><button class="modal-close" id="closeLogin">×</button><div class="modal-mark">E</div><div class="auth-tabs"><button class="tab active" id="loginTab">Sign in</button><button class="tab" id="registerTab">Create account</button></div><div id="loginForm"><div class="eyebrow">WELCOME BACK</div><h2>Sign in to continue</h2><form id="loginFormEl"><label>Username</label><input id="loginUsername" required placeholder="Enter username"><label>Password</label><input id="loginPassword" type="password" required placeholder="Enter password"><button class="btn btn-primary full" type="submit">Sign in →</button></form><small class="demo-note">Admin demo: <b>admin</b> / <b>admin123</b></small></div><div id="registerForm" class="hidden"><div class="eyebrow">GET STARTED</div><h2>Create your account</h2><form id="registerFormEl"><label>Full name</label><input id="regName" required placeholder="Your full name"><label>Username</label><input id="regUsername" required placeholder="Choose username"><label>Password</label><input id="regPassword" type="password" minlength="4" required placeholder="At least 4 characters"><button class="btn btn-primary full" type="submit">Create account →</button></form></div><div id="authMessage" class="message hidden"></div></div></div>
+<div class="modal-backdrop" id="resultModal"><div class="modal result-modal"><div class="result-check">✓</div><div class="eyebrow">EXAM SUBMITTED</div><h2>Your result is ready</h2><div class="score-big" id="finalScore">0/0</div><p id="finalMessage">Great effort. Keep learning!</p><button class="btn btn-primary full" id="resultDone">Back to dashboard</button></div></div>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
