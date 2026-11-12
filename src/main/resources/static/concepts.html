@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java Concepts | Group 2 Online Examination System</title>
+<style>
+:root{--ink:#20243a;--muted:#687086;--purple:#6757d9;--pale:#f2f0ff;--line:#e6e8ef;--bg:#f6f7fb;--green:#16845d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 "Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(120deg,#4035a4,#786be9);color:#fff;padding:42px max(24px,calc((100% - 1080px)/2))}
+header .tag{font-size:12px;letter-spacing:2px;color:#d9d5ff;font-weight:700}h1{font-size:clamp(30px,5vw,46px);line-height:1.12;margin:10px 0}header p{max-width:760px;color:#eeedff;margin:12px 0 0}
+.wrap{max-width:1080px;margin:28px auto;padding:0 22px}.notice{background:#fff8e8;border:1px solid #f0d99c;border-radius:12px;padding:16px 18px;margin-bottom:24px}.notice b{color:#805500}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin:20px 0 28px}.unit-link{background:white;border:1px solid var(--line);border-radius:12px;padding:14px;text-decoration:none;color:var(--ink);font-weight:700}.unit-link span{display:block;color:var(--purple);font-size:12px;letter-spacing:1px}
+section.unit{background:white;border:1px solid var(--line);border-radius:16px;padding:24px;margin:18px 0;scroll-margin-top:18px;box-shadow:0 5px 18px #20243a08}
+.unit h2{font-size:23px;margin:0 0 5px}.sub{color:var(--muted);margin:0 0 18px}.topic{border-top:1px solid var(--line);padding:16px 0}.topic h3{font-size:17px;margin:0 0 7px}.topic p{margin:6px 0;color:#424a5e}.topic ul{margin:8px 0}.topic li{margin:4px 0}code{background:#f1f2f7;border-radius:4px;padding:2px 5px;font-family:Consolas,monospace;font-size:.92em}pre{overflow:auto;background:#171b2c;color:#edf0ff;padding:16px;border-radius:10px;font:13px/1.55 Consolas,monospace}pre code{background:none;padding:0;color:inherit}.badge{display:inline-block;background:var(--pale);color:var(--purple);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;margin-bottom:10px}.status{background:#eaf7f1;border-left:4px solid var(--green);padding:13px 15px;border-radius:8px;margin-top:15px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{text-align:left;padding:10px;border:1px solid var(--line)}th{background:#f1f2f8}footer{text-align:center;color:var(--muted);padding:28px;font-size:13px}.toplink{color:white;text-decoration:none;border:1px solid #ffffff70;padding:8px 13px;border-radius:8px;display:inline-block;margin-top:18px}
+@media(max-width:600px){section.unit{padding:17px}.wrap{padding:0 14px}header{padding:30px 20px}}
+</style>
+</head>
+<body>
+<header><div class="tag">GROUP 2 · JAVA PROJECT</div><h1>Online Examination System</h1><p>Java concepts explained with practical examples and how each concept supports the examination portal.</p><a class="toplink" href="/">← Back to Exam Portal</a></header>
+<main class="wrap">
+<div class="notice"><b>Important implementation note:</b> The current GitHub main branch is a Spring Boot web application using Java REST APIs, HTML, CSS and JavaScript, with local serialized-file persistence. The supplied syllabus outline describes a Swing + JDBC design. This page explains every listed concept, but it does not claim Swing or JDBC is already implemented in the current branch.</div>
+<h2>Jump to a unit</h2>
+<nav class="grid"><a class="unit-link" href="#unit1"><span>UNIT 01</span>Core Java</a><a class="unit-link" href="#unit2"><span>UNIT 02</span>OOP concepts</a><a class="unit-link" href="#unit3"><span>UNIT 03</span>Threads & exceptions</a><a class="unit-link" href="#unit4"><span>UNIT 04</span>JDBC & database</a><a class="unit-link" href="#unit5"><span>UNIT 05</span>Swing GUI</a><a class="unit-link" href="#modules"><span>PROJECT</span>Modules & viva</a></nav>
+
+<section class="unit" id="unit1"><span class="badge">UNIT 1</span><h2>Classes, Objects, Arrays, Math and String methods</h2><p class="sub">The building blocks used to represent exam data and calculate marks.</p>
+<div class="topic"><h3>1. Classes and objects</h3><p>A <b>class</b> is a blueprint; an <b>object</b> is an instance created from that blueprint. In this project, Question, Exam and Result can be represented as classes.</p><pre><code>class Question {
+    String text;
+    String[] options;
+    int correctOption;
+
+    Question(String text, String[] options, int correctOption) {
+        this.text = text;
+        this.options = options;
+        this.correctOption = correctOption;
+    }
+}
+Question q1 = new Question("Java entry point?",
+    new String[]{"start()", "run()", "main()", "init()"}, 2);</code></pre><p><b>Project use:</b> each question is stored as an object with its text, options and correct answer.</p></div>
+<div class="topic"><h3>2. Arrays</h3><p>An array stores a fixed number of values of the same data type. The selected answer for each question can be stored by question index.</p><pre><code>int[] answers = {-1, 2, 0, 3};
+// -1 = unanswered; 0, 1, 2, 3 = options A, B, C, D
+answers[0] = 1;</code></pre><p><b>Project use:</b> keep student responses aligned with question positions for evaluation.</p></div>
+<div class="topic"><h3>3. Math class</h3><p>Java's built-in <code>Math</code> class performs mathematical operations. Use floating-point division to calculate percentage.</p><pre><code>double percentage = total == 0 ? 0 : score * 100.0 / total;
+long roundedPercentage = Math.round(percentage);
+boolean passed = percentage >= 40.0;</code></pre><p><b>Project use:</b> calculate marks, percentage and pass/fail status.</p></div>
+<div class="topic"><h3>4. String methods</h3><ul><li><code>trim()</code> removes extra spaces at the beginning and end.</li><li><code>isBlank()</code> checks empty or whitespace-only input.</li><li><code>equalsIgnoreCase()</code> compares text without case sensitivity.</li><li><code>length()</code> returns the number of characters.</li><li><code>toUpperCase()</code> and <code>toLowerCase()</code> change letter case.</li></ul><pre><code>String username = enteredUsername.trim();
+if (username.isBlank()) {
+    System.out.println("Username is required");
+}
+boolean same = username.equalsIgnoreCase(savedUsername);</code></pre><p><b>Project use:</b> validate names/usernames and handle text consistently.</p></div></section>
+
+<section class="unit" id="unit2"><span class="badge">UNIT 2</span><h2>Abstract class, Inheritance, Interface and Package</h2><p class="sub">Object-oriented programming separates common user behaviour from role-specific behaviour.</p>
+<div class="topic"><h3>1. Abstract class User</h3><p>An abstract class is a base class that cannot be instantiated directly. It can hold common fields and define methods that child classes must implement.</p><pre><code>abstract class User {
+    protected String name;
+    protected String username;
+
+    User(String name, String username) {
+        this.name = name;
+        this.username = username;
+    }
+    public abstract void openDashboard();
+}</code></pre></div>
+<div class="topic"><h3>2. Inheritance: Admin and Student</h3><p>Inheritance allows a child class to reuse and specialize a parent class using <code>extends</code>. Admin manages questions; Student attempts exams.</p><pre><code>class Admin extends User {
+    Admin(String n, String u) { super(n, u); }
+    @Override
+    public void openDashboard() {
+        System.out.println("Manage questions");
+    }
+}
+class Student extends User {
+    Student(String n, String u) { super(n, u); }
+    @Override
+    public void openDashboard() {
+        System.out.println("Attempt examinations");
+    }
+}</code></pre><p>Backend authorization must check the user's role too; hiding admin buttons in the interface is not sufficient security.</p></div>
+<div class="topic"><h3>3. Interface Evaluable</h3><p>An interface defines a contract. A class that implements it provides the required method.</p><pre><code>interface Evaluable {
+    int evaluate(int[] answers);
+}
+class Exam implements Evaluable {
+    private int[] key;
+    Exam(int[] key) { this.key = key; }
+
+    public int evaluate(int[] answers) {
+        int score = 0;
+        for (int i = 0; i < key.length && i < answers.length; i++)
+            if (answers[i] == key[i]) score++;
+        return score;
+    }
+}</code></pre></div>
+<div class="topic"><h3>4. Package exam.core</h3><p>A package groups related classes, prevents naming conflicts and improves organization. Example structure:</p><ul><li><code>exam.core</code> — Question, Exam, Result, evaluation logic.</li><li><code>exam.users</code> — User, Admin, Student.</li><li><code>exam.ui</code> — Login, admin and student screens.</li><li><code>exam.db</code> — Database connection and DAO/repository classes.</li></ul><p>The current repository instead uses <code>com.group2.onlineexam</code>, organized into <code>model</code>, <code>service</code> and <code>web</code> packages.</p></div></section>
+
+<section class="unit" id="unit3"><span class="badge">UNIT 3</span><h2>Timer Thread, InvalidLoginException and synchronized</h2><p class="sub">Concurrency and error handling help keep an examination reliable.</p>
+<div class="topic"><h3>1. Timer thread</h3><p>A thread is an independent path of execution. A countdown can run while a student answers questions and trigger submission at zero.</p><pre><code>for (int remaining = 60; remaining >= 0; remaining--) {
+    System.out.println("Seconds left: " + remaining);
+    Thread.sleep(1000);
+}</code></pre><p>For Swing, update components on the Event Dispatch Thread using <code>SwingUtilities.invokeLater</code> or use <code>javax.swing.Timer</code>. For a web app, the server must enforce the exam deadline; a browser-only timer can be manipulated.</p></div>
+<div class="topic"><h3>2. InvalidLoginException</h3><p>A custom exception represents a specific application error. Throw it when credentials are invalid and catch it at the login screen.</p><pre><code>class InvalidLoginException extends Exception {
+    InvalidLoginException(String message) {
+        super(message);
+    }
+}
+if (!validCredentials) {
+    throw new InvalidLoginException("Invalid username or password");
+}</code></pre></div>
+<div class="topic"><h3>3. synchronized submission</h3><p><code>synchronized</code> restricts concurrent access to a critical section on the same object, helping avoid simultaneous modification of shared in-memory state.</p><pre><code>public synchronized Result submitExam(String username, int[] answers) {
+    // Validate, evaluate and store one submission.
+    return createAndSaveResult(username, answers);
+}</code></pre><p>It does not replace database transactions, unique constraints or duplicate-submission checks across multiple application servers.</p></div></section>
+
+<section class="unit" id="unit4"><span class="badge">UNIT 4</span><h2>JDBC, Statement, PreparedStatement and Database Tables</h2><p class="sub">JDBC is Java's standard API for connecting to relational databases such as MySQL.</p>
+<div class="topic"><h3>1. JDBC workflow</h3><ol><li>Open a database connection.</li><li>Prepare and execute SQL.</li><li>Read rows from a ResultSet.</li><li>Close resources.</li></ol></div>
+<div class="topic"><h3>2. Statement</h3><p><code>Statement</code> executes a fixed SQL query. Use it for SQL that does not contain user-supplied values.</p><pre><code>String sql = "SELECT id, question_text FROM questions";
+try (Statement st = connection.createStatement();
+     ResultSet rs = st.executeQuery(sql)) {
+    while (rs.next()) {
+        System.out.println(rs.getString("question_text"));
+    }
+}</code></pre></div>
+<div class="topic"><h3>3. PreparedStatement</h3><p><code>PreparedStatement</code> uses <code>?</code> placeholders and binds values separately. It is preferred for user input and helps prevent SQL injection.</p><pre><code>String sql = "SELECT id FROM users WHERE username = ?";
+try (PreparedStatement ps = connection.prepareStatement(sql)) {
+    ps.setString(1, username);
+    try (ResultSet rs = ps.executeQuery()) {
+        if (rs.next()) System.out.println("User found");
+    }
+}</code></pre><p>Example for storing a result:</p><pre><code>String sql = "INSERT INTO results(username, score, total) VALUES (?, ?, ?)";
+try (PreparedStatement ps = connection.prepareStatement(sql)) {
+    ps.setString(1, username);
+    ps.setInt(2, score);
+    ps.setInt(3, total);
+    ps.executeUpdate();
+}</code></pre></div>
+<div class="topic"><h3>4. Suggested database tables</h3><ul><li><b>users:</b> user_id, name, username, password_hash, role.</li><li><b>questions:</b> question_id, question_text, option_a, option_b, option_c, option_d, correct_option, category.</li><li><b>results:</b> result_id, user_id, score, total, percentage, submitted_at.</li></ul><p>Use password hashes rather than plain-text passwords, foreign keys between results and users, and transactions for related writes.</p></div>
+<div class="status"><b>Current code status:</b> the GitHub main branch currently persists data in <code>data/online-exam.dat</code> using Java object serialization. JDBC, SQL tables, Statement and PreparedStatement are explained here but are not yet integrated into that branch.</div></section>
+
+<section class="unit" id="unit5"><span class="badge">UNIT 5</span><h2>JRadioButton, JButton, JLabel, Layouts and ActionListener</h2><p class="sub">These are Java Swing components used to build the desktop examination interface described in the project outline.</p>
+<div class="topic"><h3>1. JRadioButton</h3><p>Allows a student to select one option. Add the options to a <code>ButtonGroup</code> so only one can be selected.</p><pre><code>JRadioButton a = new JRadioButton("Option A");
+JRadioButton b = new JRadioButton("Option B");
+JRadioButton c = new JRadioButton("Option C");
+JRadioButton d = new JRadioButton("Option D");
+ButtonGroup group = new ButtonGroup();
+group.add(a); group.add(b); group.add(c); group.add(d);</code></pre></div>
+<div class="topic"><h3>2. JButton and JLabel</h3><p><code>JButton</code> creates clickable controls such as Login, Next and Submit. <code>JLabel</code> displays text such as the question, timer, student name or score.</p><pre><code>JLabel question = new JLabel("Which is Java's entry method?");
+JButton next = new JButton("Next");</code></pre></div>
+<div class="topic"><h3>3. GridLayout and FlowLayout</h3><ul><li><code>GridLayout</code> arranges components in equal-sized rows and columns, useful for a question-number palette.</li><li><code>FlowLayout</code> places components from left to right and wraps them, useful for navigation buttons.</li></ul><pre><code>JPanel palette = new JPanel(new GridLayout(0, 5, 8, 8));
+JPanel controls = new JPanel(new FlowLayout(FlowLayout.RIGHT));</code></pre></div>
+<div class="topic"><h3>4. ActionListener</h3><p>An ActionListener handles an action event, commonly a button click.</p><pre><code>next.addActionListener(event -> {
+    saveSelectedAnswer();
+    showNextQuestion();
+});</code></pre><p>Typical actions: login, register, start exam, select an answer, navigate questions and submit.</p></div>
+<div class="status"><b>Current code status:</b> the GitHub main branch uses an HTML/CSS/JavaScript browser interface, not Swing. It does not currently use JRadioButton, JButton, JLabel, GridLayout, FlowLayout or Swing ActionListener.</div></section>
+
+<section class="unit" id="modules"><span class="badge">PROJECT FLOW</span><h2>How the five project modules work together</h2><div class="table-wrap"><table><thead><tr><th>Module</th><th>What it does</th><th>Key concepts</th></tr></thead><tbody><tr><td>Admin module</td><td>Admin creates and manages questions.</td><td>Classes, objects, role checks, database operations</td></tr><tr><td>Student login and test selection</td><td>Student signs in and selects an exam.</td><td>Inheritance, exceptions, String methods</td></tr><tr><td>Timed test</td><td>Displays questions and counts down.</td><td>Arrays, threads/timer, GUI events</td></tr><tr><td>Automatic evaluation</td><td>Compares answers and calculates score.</td><td>Interface, loops, Math</td></tr><tr><td>Result storage and display</td><td>Saves and displays student results.</td><td>JDBC, PreparedStatement, ResultSet</td></tr></tbody></table></div><h3 style="margin-top:22px">Quick viva revision</h3><div class="table-wrap"><table><thead><tr><th>Concept</th><th>Short answer</th></tr></thead><tbody><tr><td>Class / Object</td><td>Blueprint / instance of a class.</td></tr><tr><td>Array</td><td>Fixed-size collection of same-type values.</td></tr><tr><td>Abstract class</td><td>Base class that cannot be instantiated directly.</td></tr><tr><td>Inheritance</td><td>Child class reuses or extends a parent class.</td></tr><tr><td>Interface</td><td>Contract implemented by a class.</td></tr><tr><td>Thread</td><td>Independent path of execution.</td></tr><tr><td>Exception</td><td>Object representing an error/exceptional condition.</td></tr><tr><td>synchronized</td><td>Controls concurrent access to a critical section.</td></tr><tr><td>JDBC</td><td>Java API for relational database connectivity.</td></tr><tr><td>PreparedStatement</td><td>Parameterized SQL statement with placeholders.</td></tr><tr><td>ActionListener</td><td>Handles action events such as button clicks.</td></tr></tbody></table></div></section>
+</main><footer>Group 2 · Online Examination System · Java Concepts & Project Viva Guide</footer>
+</body></html>
