@@ -24,9 +24,9 @@ ExamVault is a Java Spring Boot online examination platform with a clean, respon
    ```bash
    mvn spring-boot:run
    ```
-4. Open http://localhost:8080
+4. Open http://localhost:8081
 
-You can also build a runnable JAR with `mvn clean package` and run it using `java -jar target/examvault-1.0.0.jar`.
+You can also build a runnable JAR with `mvn clean package` and run it using `java -jar target/examvault-1.0.0.jar --server.port=8081`.
 
 ## Demo administrator
 - Email: `admin@examvault.com`
