@@ -11,6 +11,11 @@ ExamVault is a Java Spring Boot online examination platform with a clean, respon
 - Persistent attempt history using file-backed H2 database
 - Responsive dashboard with test library, stats and result history
 
+## Live website
+
+- Frontend: https://examvault4.netlify.app
+- Note: This Netlify deployment serves the frontend. Backend-dependent features such as authentication, exam submissions, and result storage require the Spring Boot backend to be deployed and connected separately.
+
 ## Tech stack
 - Java 17, Spring Boot 3.4.5
 - Spring Web, Spring JDBC, Spring Security Crypto (BCrypt)
