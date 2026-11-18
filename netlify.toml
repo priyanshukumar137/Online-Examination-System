@@ -1,0 +1,7 @@
+# Keep browser API calls on the Netlify origin so session cookies work.
+# This proxy target matches the Render service defined in render.yaml.
+[[redirects]]
+  from = "/api/*"
+  to = "https://examvault-backend-priyanshu.onrender.com/api/:splat"
+  status = 200
+  force = true
