@@ -79,3 +79,9 @@ The repository includes a Render Blueprint (`render.yaml`) for the Spring Boot A
 7. Test student registration, sign-in, exam submission and results.
 
 The Render Blueprint currently uses the free web-service plan, which may sleep when idle and take time to wake. PostgreSQL is external so student accounts and results are not stored on the service's temporary filesystem. Never commit database passwords to GitHub.
+
+## Frontend fallback while the API is not deployed
+
+If the Spring Boot API is unreachable, the browser UI uses a local demo mode so a student can create an account, sign in, open the dashboard, take sample tests, and view demo results. Demo accounts and results are stored only in that browser's local storage; they are not shared across devices and are not a production database. Deploy and connect the Spring Boot service plus PostgreSQL to enable real server-side accounts and persistent results.
+
+Demo administrator (demo mode only): `admin@examvault.com` / `Admin@123`.
