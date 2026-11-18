@@ -29,7 +29,15 @@ public class ExamVaultApplication {
     {"Which protocol is used to transfer web pages securely?","HTTP","FTP","HTTPS","SMTP","C"},{"How many layers are in the OSI model?","4","5","7","8","C"},{"Which device forwards packets between networks?","Switch","Router","Repeater","Hub","B"},{"What does DNS translate?","IP to MAC only","Domain names to IP addresses","Files to packets","HTTP to HTTPS","B"},{"Which transport protocol is connection-oriented?","UDP","IP","TCP","ARP","C"}};
    for(int exam=0;exam<10;exam++){Long examId=db.queryForObject("SELECT id FROM exams WHERE title=?",Long.class,tests[exam][0]);Integer existing=db.queryForObject("SELECT COUNT(*) FROM questions WHERE exam_id=?",Integer.class,examId);for(int j=existing;j<10;j++){String[] v=q[(exam*5+j)%q.length];db.update("INSERT INTO questions(exam_id,question_text,option_a,option_b,option_c,option_d,correct_option) VALUES(?,?,?,?,?,?,?)",examId,v[0],v[1],v[2],v[3],v[4],v[5]);}}
   }
-  if(db.queryForObject("SELECT COUNT(*) FROM users WHERE email='admin@examvault.com'",Integer.class)==0)db.update("INSERT INTO users(name,email,password_hash,role) VALUES(?,?,?,?)","ExamVault Admin","admin@examvault.com",encoder.encode("Admin@123"),"ADMIN");
+  String adminEmail=System.getenv().getOrDefault("ADMIN_EMAIL","princeraj934111@gmail.com").trim().toLowerCase();
+  String adminPassword=System.getenv("ADMIN_PASSWORD");
+  if(adminPassword!=null&&!adminPassword.isBlank()&&adminPassword.length()>=8){
+   var adminRows=db.queryForList("SELECT id FROM users WHERE email=?",adminEmail);
+   if(adminRows.isEmpty()) db.update("INSERT INTO users(name,email,password_hash,role) VALUES(?,?,?,?)","ExamVault Administrator",adminEmail,encoder.encode(adminPassword),"ADMIN");
+   else db.update("UPDATE users SET role='ADMIN',password_hash=? WHERE email=?",encoder.encode(adminPassword),adminEmail);
+  } else {
+   System.out.println("ADMIN_PASSWORD is not configured; admin account bootstrap was skipped.");
+  }
  };}
 }
 @RestController @RequestMapping("/api")
