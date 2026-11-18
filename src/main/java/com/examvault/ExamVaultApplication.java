@@ -52,6 +52,7 @@ class ExamApi {
   var u=rows.get(0);s.setAttribute("uid",((Number)u.get("ID")).longValue());s.setAttribute("name",u.get("NAME"));s.setAttribute("email",u.get("EMAIL"));s.setAttribute("role",u.get("ROLE"));return ResponseEntity.ok(user(s));
  }
  @PostMapping("/auth/logout") Map<String,String> logout(HttpSession s){s.invalidate();return Map.of("message","Signed out");}
+ @GetMapping("/health") Map<String,String> health(){return Map.of("status","ok","service","ExamVault API");}
  @GetMapping("/auth/me") ResponseEntity<?> me(HttpSession s){return uid(s)==null?error("Please sign in.",HttpStatus.UNAUTHORIZED):ResponseEntity.ok(user(s));}
  @GetMapping("/exams") ResponseEntity<?> exams(HttpSession s){if(uid(s)==null)return error("Please sign in.",HttpStatus.UNAUTHORIZED);return ResponseEntity.ok(db.queryForList("SELECT e.id,e.title,e.category,e.description,e.duration_minutes,COUNT(q.id) question_count FROM exams e LEFT JOIN questions q ON q.exam_id=e.id WHERE e.active=TRUE GROUP BY e.id,e.title,e.category,e.description,e.duration_minutes ORDER BY e.id"));}
  @GetMapping("/exams/{id}/questions") ResponseEntity<?> questions(@PathVariable long id,HttpSession s){
