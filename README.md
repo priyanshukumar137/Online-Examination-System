@@ -43,3 +43,19 @@ H2 stores data in `./data/examvault`. The database directory is intentionally ig
 - `GET /api/exams`, `GET /api/exams/{id}/questions`
 - `POST /api/attempts`, `GET /api/results`
 - `POST /api/admin/questions` (admin only)
+
+
+## ExamVault features
+
+- Student registration with name, email, phone number, age, and password.
+- Separate student and administrator sign-in portals with role checks.
+- Ten practice tests with ten MCQs per test.
+- Student dashboard, timed attempts, and result history.
+- Administrator question bank module for adding MCQs, answer choices, correct answers, and explanations.
+
+### Default administrator account
+
+- Email: `admin@examvault.com`
+- Password: `Admin@123`
+
+Change the default administrator password before deploying this project publicly.
